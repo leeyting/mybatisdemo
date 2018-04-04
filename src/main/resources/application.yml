@@ -1,0 +1,14 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: mybatis-demo
+  http:
+    encoding:
+      charset: UTF-8
+      enable: true
+      force: true
+  mvc:
+    static-path-pattern: /static/**
