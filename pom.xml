@@ -48,6 +48,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--热部署-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>1.5.7.RELEASE</version>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -101,6 +108,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--热部署，可以不用配置-->
+		<!--	<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					&lt;!&ndash;fork 如果没有改配置devtools不会起作用，即应用不会restart&ndash;&gt;
+					<fork>true</fork>
+					&lt;!&ndash;支持静态文件热部署&ndash;&gt;
+					<addResources>true</addResources>
+				</configuration>
+			</plugin>-->
 			<!-- mybatis generator 自动生成代码插件 -->
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>
