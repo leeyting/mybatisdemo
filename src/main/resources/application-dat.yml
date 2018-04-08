@@ -40,3 +40,7 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
+#自定义banner
+banner:
+  location: banner-buddha.txt
