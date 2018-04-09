@@ -1,11 +1,14 @@
 package com.mybatis.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
+import com.mybatis.demo.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: liyao
@@ -19,6 +22,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @PostMapping("/add")
     public int addUser(User user){
@@ -43,5 +49,12 @@ public class UserController {
     @PostMapping("/findUserByIds")
     List<User> findUserByIds(@RequestBody List<Integer> ids){
         return userService.findUserByIds(ids);
+    }
+
+    @GetMapping("/info")
+    public Map info(){
+        String name = redisUtil.get("name");
+        Map map = JSON.parseObject(name, Map.class);
+        return map;
     }
 }
