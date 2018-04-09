@@ -1,4 +1,4 @@
-package com.mybatis.demo.util;
+package com.mybatis.demo.base.redis.standalone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

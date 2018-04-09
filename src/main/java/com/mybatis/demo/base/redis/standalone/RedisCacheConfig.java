@@ -1,4 +1,4 @@
-package com.mybatis.demo.base;
+package com.mybatis.demo.base.redis.standalone;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -12,7 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @Author: liyao
- * @Description: redis配置
+ * @Description: redis配置-单机
  * @Date: Created in 2018/04/09 15:04
  */
 

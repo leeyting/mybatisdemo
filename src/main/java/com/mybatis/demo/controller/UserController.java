@@ -1,9 +1,9 @@
 package com.mybatis.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
-import com.mybatis.demo.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
