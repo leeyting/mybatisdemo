@@ -1,4 +1,4 @@
-package com.mybatis.demo.base;
+package com.mybatis.demo.base.redis.cors;
 
 import org.springframework.stereotype.Component;
 
