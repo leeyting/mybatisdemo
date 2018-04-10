@@ -1,6 +1,5 @@
 package com.mybatis.demo.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.entity.User;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: liyao
