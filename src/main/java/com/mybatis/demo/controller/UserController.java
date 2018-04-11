@@ -2,6 +2,8 @@ package com.mybatis.demo.controller;
 
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
+import com.mybatis.demo.base.result.ResultFactory;
+import com.mybatis.demo.base.result.ResultV1;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,18 +56,19 @@ public class UserController {
     }
 
     @GetMapping("/info")
-    public String info() {
-        return redisUtil.get("name");
+    public ResultV1 info() {
+        redisUtil.set("name", "很好的啊");
+        return ResultFactory.SuccessV1(redisUtil.get("name"));
     }
 
-    @GetMapping("setter")
-    public String setter() {
+    @GetMapping("/setter")
+    public ResultV1 setter() {
         redisClusterUtil.set("rc", "name", "123和");
-        return "yes";
+        return ResultFactory.SuccessV1("成功");
     }
 
-    @GetMapping("getter")
-    public String getter() {
-        return redisClusterUtil.get("rc", "name");
+    @GetMapping("/getter")
+    public ResultV1 getter() {
+        return ResultFactory.SuccessV1(redisClusterUtil.get("rc", "name"));
     }
 }

@@ -33,7 +33,9 @@ public class RedisCacheConfig {
         // 或者JdkSerializationRedisSerializer序列化方式;
         RedisSerializer<String> redisSerializer = new StringRedisSerializer();// Long类型不可以会出现异常信息;
         redisTemplate.setKeySerializer(redisSerializer);
+        redisTemplate.setValueSerializer(redisSerializer);
         redisTemplate.setHashKeySerializer(redisSerializer);
+        redisTemplate.setHashValueSerializer(redisSerializer);
         return redisTemplate;
     }
 
