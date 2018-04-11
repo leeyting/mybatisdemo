@@ -1,5 +1,6 @@
 package com.mybatis.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.base.result.ResultFactory;
@@ -9,7 +10,9 @@ import com.mybatis.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: liyao
@@ -57,8 +60,12 @@ public class UserController {
 
     @GetMapping("/info")
     public ResultV1 info() {
-        redisUtil.set("name", "很好的啊");
-        return ResultFactory.SuccessV1(redisUtil.get("name"));
+        Map map = new HashMap();
+        map.put("id", 123);
+        map.put("nick", "阿发");
+        redisUtil.set("name", JSON.toJSONString(map));
+        String name = redisUtil.get("name");
+        return ResultFactory.SuccessV1(JSON.parse(name));
     }
 
     @GetMapping("/setter")

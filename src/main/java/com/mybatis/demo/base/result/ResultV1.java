@@ -14,7 +14,7 @@ public class ResultV1 {
     @JSONField(name = "resultCode")
     private String resultCode = "fail";
 
-    @JSONField(name = "resultCode")
+    @JSONField(name = "resultData")
     private Object resultData = null;
 
     @JSONField(name = "version")
