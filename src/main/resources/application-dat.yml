@@ -64,3 +64,16 @@ pagehelper:
 #自定义banner
 banner:
   location: banner-buddha.txt
+
+logging:
+  path: /home/bea1/logs/mybatisdemo-dat/${server.port}/
+  file: mybatisdemo
+  level:
+    root: INFO
+    com:
+      alibaba:
+        dubbo: INFO
+    org:
+      mybatis: INFO
+      springframework:
+        web: INFO

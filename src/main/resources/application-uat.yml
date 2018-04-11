@@ -49,3 +49,15 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 
+logging:
+  path: /home/bea1/logs/mybatisdemo-uat/${server.port}/
+  file: mybatisdemo
+  level:
+    root: INFO
+    com:
+      alibaba:
+        dubbo: INFO
+    org:
+      mybatis: INFO
+      springframework:
+        web: INFO
