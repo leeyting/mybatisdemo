@@ -7,6 +7,8 @@ import com.mybatis.demo.base.result.ResultFactory;
 import com.mybatis.demo.base.result.ResultV1;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -64,6 +67,7 @@ public class UserController {
         map.put("id", 123);
         map.put("nick", "阿发");
         redisUtil.set("name", JSON.toJSONString(map));
+        logger.info("name:{}", JSON.toJSONString(map));
         String name = redisUtil.get("name");
         return ResultFactory.SuccessV1(JSON.parse(name));
     }
