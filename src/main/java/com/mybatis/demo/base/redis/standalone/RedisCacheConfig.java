@@ -24,6 +24,12 @@ public class RedisCacheConfig {
         CacheManager cacheManager = new RedisCacheManager(redisTemplate);
         return cacheManager;
     }
+
+    /**
+     * redisTemplate 序列化使用的jdkSerializeable, 存储二进制字节码, 所以自定义序列化类
+     * @param factory
+     * @return
+     */
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
         RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();

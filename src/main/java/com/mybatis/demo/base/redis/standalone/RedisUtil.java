@@ -5,10 +5,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 /**
  * @Author: liyao
  * @Description: redis 工具类
@@ -21,6 +23,7 @@ public class RedisUtil {
     @SuppressWarnings("rawtypes")
     @Autowired
     private RedisTemplate redisTemplate;
+
     /**
      * 批量删除对应的value
      *
@@ -31,6 +34,7 @@ public class RedisUtil {
             remove(key);
         }
     }
+
     /**
      * 批量删除key
      *
@@ -41,6 +45,7 @@ public class RedisUtil {
         if (keys.size() > 0)
             redisTemplate.delete(keys);
     }
+
     /**
      * 删除对应的value
      *
@@ -51,6 +56,7 @@ public class RedisUtil {
             redisTemplate.delete(key);
         }
     }
+
     /**
      * 判断缓存中是否有对应的value
      *
@@ -60,6 +66,7 @@ public class RedisUtil {
     public boolean exists(final String key) {
         return redisTemplate.hasKey(key);
     }
+
     /**
      * 读取缓存
      *
@@ -71,11 +78,12 @@ public class RedisUtil {
         redisTemplate.setValueSerializer(new StringRedisSerializer());
         ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
         result = operations.get(key);
-        if(result==null){
+        if (result == null) {
             return null;
         }
         return result.toString();
     }
+
     /**
      * 写入缓存
      *
@@ -94,6 +102,7 @@ public class RedisUtil {
         }
         return result;
     }
+
     /**
      * 写入缓存
      *
@@ -114,7 +123,7 @@ public class RedisUtil {
         return result;
     }
 
-    public  boolean hmset(String key, Map<String, String> value) {
+    public boolean hmset(String key, Map<String, String> value) {
         boolean result = false;
         try {
             redisTemplate.opsForHash().putAll(key, value);
@@ -125,10 +134,10 @@ public class RedisUtil {
         return result;
     }
 
-    public  Map<String,String> hmget(String key) {
-        Map<String,String> result =null;
+    public Map<String, String> hmget(String key) {
+        Map<String, String> result = null;
         try {
-            result=  redisTemplate.opsForHash().entries(key);
+            result = redisTemplate.opsForHash().entries(key);
         } catch (Exception e) {
             e.printStackTrace();
         }
