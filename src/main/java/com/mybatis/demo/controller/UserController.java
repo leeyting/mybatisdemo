@@ -1,6 +1,7 @@
 package com.mybatis.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.mybatis.demo.aop.annotation.LoginAnnotation;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.base.result.ResultFactory;
@@ -61,6 +62,7 @@ public class UserController {
         return userService.findUserByIds(ids);
     }
 
+    @LoginAnnotation(name = "登录验证")
     @GetMapping("/info")
     public ResultV1 info() {
         Map map = new HashMap();
