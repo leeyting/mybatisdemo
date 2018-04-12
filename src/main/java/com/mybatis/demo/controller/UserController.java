@@ -58,7 +58,7 @@ public class UserController {
     }
 
     @PostMapping("/findUserByIds")
-    List<User> findUserByIds(@RequestBody List<Integer> ids) {
+    public List<User> findUserByIds(@RequestBody List<Integer> ids) {
         return userService.findUserByIds(ids);
     }
 
