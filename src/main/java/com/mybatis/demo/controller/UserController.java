@@ -2,10 +2,12 @@ package com.mybatis.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.aop.annotation.LoginAnnotation;
+import com.mybatis.demo.base.context.SpringContextAware;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.base.result.ResultFactory;
 import com.mybatis.demo.base.result.ResultV1;
+import com.mybatis.demo.base.thread.AsyncTaskService;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
 import org.slf4j.Logger;
@@ -83,5 +85,19 @@ public class UserController {
     @GetMapping("/getter")
     public ResultV1 getter() {
         return ResultFactory.SuccessV1(redisClusterUtil.get("rc", "name"));
+    }
+
+    @GetMapping("/asynService")
+    public ResultV1 asynService() {
+        AsyncTaskService taskService = SpringContextAware.getBean(AsyncTaskService.class);
+        taskService.produceTask();
+        taskService.produceTask();
+        taskService.produceTask();
+        taskService.produceTask();
+        taskService.comsumerTask();
+        taskService.comsumerTask();
+        taskService.comsumerTask();
+        taskService.comsumerTask();
+        return ResultFactory.SuccessV1("success");
     }
 }

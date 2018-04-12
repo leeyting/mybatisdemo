@@ -36,7 +36,13 @@ spring:
           # （普通集群，不使用则不用开启）在群集中执行命令时要遵循的最大重定向数目。
           max-redirects:
           expireSeconds: 3600
-
+    #线程池配置
+    task:
+        pool:
+          corePoolSize : 20
+          maxPoolSize : 40
+          keepAliveSeconds : 60
+          queueCapacity : 20
 
 
 mybatis:
