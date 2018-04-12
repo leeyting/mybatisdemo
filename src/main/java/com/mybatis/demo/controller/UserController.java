@@ -94,10 +94,16 @@ public class UserController {
         taskService.produceTask();
         taskService.produceTask();
         taskService.produceTask();
+
         taskService.comsumerTask();
         taskService.comsumerTask();
         taskService.comsumerTask();
         taskService.comsumerTask();
+
+        taskService.produceTaskV2();
+        taskService.produceTaskV2();
+        taskService.produceTaskV2();
+        taskService.produceTaskV2();
         return ResultFactory.SuccessV1("success");
     }
 }

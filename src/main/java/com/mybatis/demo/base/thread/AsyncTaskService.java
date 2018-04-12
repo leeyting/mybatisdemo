@@ -19,4 +19,9 @@ public class AsyncTaskService {
     public void comsumerTask(){
         System.out.println(Thread.currentThread().getName() + ": 任务消费...");
     }
+
+    @Async
+    public void produceTaskV2(){
+        System.out.println(Thread.currentThread().getName() + ": 任务生产V2...");
+    }
 }
