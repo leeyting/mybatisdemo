@@ -1,4 +1,4 @@
-package com.mybatis.demo.base;
+package com.mybatis.demo.base.context;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
