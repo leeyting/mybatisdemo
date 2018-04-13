@@ -43,6 +43,11 @@ spring:
           maxPoolSize : 40
           keepAliveSeconds : 60
           queueCapacity : 20
+    activemq:
+        broker-url: tcp://localhost:61616
+        in-memory: true
+        pool:
+          enabled: true
 
 
 mybatis:

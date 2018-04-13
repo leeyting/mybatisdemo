@@ -3,6 +3,7 @@ package com.mybatis.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.aop.annotation.LoginAnnotation;
 import com.mybatis.demo.base.context.SpringContextAware;
+import com.mybatis.demo.base.mq.Producer;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
 import com.mybatis.demo.base.redis.standalone.RedisUtil;
 import com.mybatis.demo.base.result.ResultFactory;
@@ -10,6 +11,7 @@ import com.mybatis.demo.base.result.ResultV1;
 import com.mybatis.demo.base.thread.AsyncTaskService;
 import com.mybatis.demo.entity.User;
 import com.mybatis.demo.service.UserService;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ public class UserController {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private Producer producer;
 
     @PostMapping("/add")
     public int addUser(User user) {
@@ -106,4 +111,12 @@ public class UserController {
         taskService.produceTaskV2();
         return ResultFactory.SuccessV1("success");
     }
+
+    @GetMapping("/sendMessage")
+    public ResultV1 sendMessage() {
+        producer.sendMessage(new ActiveMQQueue("mytest.queue"), "发送消息hello");
+        return ResultFactory.SuccessV1("发送成功");
+    }
+
+
 }

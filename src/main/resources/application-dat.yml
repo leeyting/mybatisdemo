@@ -56,6 +56,11 @@ spring:
           maxPoolSize : 40
           keepAliveSeconds : 60
           queueCapacity : 20
+    activemq:
+        broker-url: tcp://localhost:61616
+        in-memory: true
+        pool:
+          enabled: true
 
 mybatis:
 #  mapper-locations: classpath:mapping/*.xml
@@ -69,8 +74,8 @@ pagehelper:
     params: count=countSql
 
 #自定义banner
-banner:
-  location: banner-buddha.txt
+#banner:
+#  location: banner-buddha.txt
 
 logging:
   path: /home/bea1/logs/mybatisdemo-dat/${server.port}/
