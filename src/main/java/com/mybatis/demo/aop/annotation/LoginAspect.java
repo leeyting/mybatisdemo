@@ -2,7 +2,6 @@ package com.mybatis.demo.aop.annotation;
 
 import com.mybatis.demo.aop.WebLogAspect;
 import com.mybatis.demo.base.result.ResultFactory;
-import com.mybatis.demo.base.result.ResultV1;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -37,7 +36,7 @@ public class LoginAspect {
     }
 
     @Around("annotationPointcut()")
-    public ResultV1 interceptor(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object interceptor(ProceedingJoinPoint joinPoint) throws Throwable {
         Object result = null;
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -52,7 +51,7 @@ public class LoginAspect {
             e.printStackTrace();
             logger.info("授权失败：", e);
         }
-        return ResultFactory.SuccessV1(result);
+        return result;
     }
 
     @After("annotationPointcut()")
