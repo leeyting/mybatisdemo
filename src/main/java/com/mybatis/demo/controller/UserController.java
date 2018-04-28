@@ -17,9 +17,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @Author: liyao
@@ -116,6 +119,25 @@ public class UserController {
     public ResultV1 sendMessage() {
         producer.sendMessage(new ActiveMQQueue("mytest.queue"), "发送消息hello");
         return ResultFactory.SuccessV1("发送成功");
+    }
+
+    @GetMapping("/session")
+    public String session(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println(request.getSession().getId());
+        UUID uid = (UUID) session.getAttribute("uid");
+        if (uid == null) {
+            uid = UUID.randomUUID();
+        }
+        session.setAttribute("uid", uid);
+        return uid.toString() + " : " + session.getId();
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "登出成功";
     }
 
 

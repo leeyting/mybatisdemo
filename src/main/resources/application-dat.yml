@@ -61,6 +61,8 @@ spring:
         in-memory: true
         pool:
           enabled: true
+#    session:
+#        store-type: redis
 
 mybatis:
 #  mapper-locations: classpath:mapping/*.xml
