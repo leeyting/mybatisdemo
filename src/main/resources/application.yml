@@ -2,6 +2,11 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+#前后端分离，前端页面地址
+config:
+  front:
+    view : /home/bea1/fv/
+
 spring:
   application:
     name: mybatis-demo
@@ -11,4 +16,10 @@ spring:
       enable: true
       force: true
   mvc:
-    static-path-pattern: /static/**
+    #表示所有的访问都经过静态资源路径,可以自定义，如/static/**
+    static-path-pattern: /**
+  resources:
+    #默认加载路径classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+    #自定义加载路径
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${config.front.view}
+

@@ -11,3 +11,5 @@ spring.session.store-type=redis
 方式2、在程序启动类上添加注解
 @EnableRedisHttpSession
 方式3、自定义SessionConfig类，添加注解@EnableRedisHttpSession
+
+5.springboot加载静态资源配置，前后端分离
