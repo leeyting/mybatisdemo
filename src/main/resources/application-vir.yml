@@ -1,6 +1,6 @@
 server:
   port: 83
-  context-path: /demovir
+#  context-path: /demovir
 
 spring:
     datasource:

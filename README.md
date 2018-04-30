@@ -13,3 +13,7 @@ spring.session.store-type=redis
 方式3、自定义SessionConfig类，添加注解@EnableRedisHttpSession
 
 5.springboot加载静态资源配置，前后端分离
+
+6.文件上传
+
+7.自定义异常
