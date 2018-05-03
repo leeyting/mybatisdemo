@@ -63,6 +63,17 @@ spring:
 #          enabled: true
     session:
       store-type: none
+    mail:
+      host: smtp.163.com
+      username: liyao_it@163.com
+      password: auth123
+      properties:
+                mail:
+                    smtp:
+                        auth: true
+                        starttls:
+                            enable: true
+                            required: true
 
 mybatis:
 #  mapper-locations: classpath:mapping/*.xml

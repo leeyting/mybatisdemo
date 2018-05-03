@@ -17,3 +17,5 @@ spring.session.store-type=redis
 6.文件上传
 
 7.自定义异常
+
+8.邮件发送
