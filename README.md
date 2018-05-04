@@ -19,3 +19,5 @@ spring.session.store-type=redis
 7.自定义异常
 
 8.邮件发送
+
+9.beetl模板

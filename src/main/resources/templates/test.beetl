@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<TradeData>
+   <BaseInfo>
+      <TradeCode>HCSAppCalPrem</TradeCode>
+      <RequestDate>${data.requestDate!''}</RequestDate>
+      <ResponseDate>${data.responseDate!''}</ResponseDate>
+      <UserCode>${data.userCode!''}</UserCode>
+      <Password>${data.password!''}</Password>
+   </BaseInfo>
+   <ContInfo>
+      <LCCont>
+         <TransNo>${data.transNo!''}</TransNo>
+         <ContSource>${data.contSource!''}</ContSource>
+         <PolApplyDate>${data.polApplyDate!data.requestDate}</PolApplyDate>
+      </LCCont>
+      <Agent>
+		 <AgentCom>${data.agentCom!''}</AgentCom>
+	 </Agent>
+      <LCInsureds>
+         <LCInsuredCount>1</LCInsuredCount>
+         <LCInsured>
+           <Risks>
+            <RiskCount>${data.risks.~size}</RiskCount>
+            <% var riskIndex = 1; for(risk in data.risks!) { %>
+               <Risk>
+                  <RiskSelNo>${riskIndex++}</RiskSelNo>
+                  <RiskCode>${risk.riskCode!''}</RiskCode>
+                  <MainRiskCode>${risk.mainRiskCode!''}</MainRiskCode>
+                  <Amnt>${risk.amnt!''}</Amnt>
+                  <AddFee></AddFee>
+                  <Mult>1</Mult>
+                  <PayIntv>${risk.payIntv!''}</PayIntv>
+                  <InsuYearFlag>${risk.insuYearFlag!''}</InsuYearFlag>
+                  <InsuYear>${risk.insuYear!''}</InsuYear>
+                  <Payendyearflag>${risk.payendyearflag!''}</Payendyearflag>
+                  <Payendyear>${risk.payendyear!''}</Payendyear>
+                  <LoanComName>${risk.loanComName!''}</LoanComName>
+				  <LoanContractNum>${risk.loanContractNum!''}</LoanContractNum>
+				  <LoanComNum>${risk.loanComNum!''}</LoanComNum>
+                  <Dutys>
+                     <DutyCount>${risk.dutys.~size}</DutyCount>
+                  	 <% for(dataDuty in risk.dutys!) { %>
+                     <Duty>
+                        <DutyCode>${dataDuty.dutyCode!''}</DutyCode>
+                        <Amnt>${dataDuty.amnt!''}</Amnt>
+                        <AddFee></AddFee>
+                        <Prem>${dataDuty.prem!''}</Prem>
+                        <Mult>1</Mult>
+                        <PayIntv>${dataDuty.payIntv!''}</PayIntv>
+                        <InsuYearFlag>${dataDuty.insuYearFlag!''}</InsuYearFlag>
+                        <InsuYear>${dataDuty.insuYear!''}</InsuYear>
+                        <Payendyearflag>${dataDuty.payendyearflag!''}</Payendyearflag>
+                        <Payendyear>${dataDuty.payendyear!''}</Payendyear>
+                     </Duty>
+                     <% } %>
+                  </Dutys>
+               </Risk>
+           <% } %>
+        </Risks>
+         </LCInsured>
+      </LCInsureds>
+   </ContInfo>
+</TradeData>
