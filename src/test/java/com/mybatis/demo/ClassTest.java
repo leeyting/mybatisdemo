@@ -24,6 +24,10 @@ public class ClassTest {
     @Test
     public void test(){
         try {
+            System.out.println(ClassLoader.getSystemClassLoader());
+            System.out.println(ClassLoader.getSystemClassLoader().getParent());
+            System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
+
             Class<?> aClass = this.getClass().getClassLoader().loadClass("com.mybatis.demo.base.utils.MyJSONObject");
             MyJSONObject myJSONObject = (MyJSONObject)aClass.newInstance();
 
