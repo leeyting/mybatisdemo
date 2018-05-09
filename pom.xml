@@ -136,6 +136,17 @@
 			<artifactId>beetl</artifactId>
 			<version>2.7.24</version>
 		</dependency>
+		<!--RSA算法加密-->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
+			<version>1.45</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
+		</dependency>
 		<!-- springboot - Redis -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
