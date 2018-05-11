@@ -2,6 +2,7 @@ package com.mybatis.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.mybatis.demo.aop.annotation.LoginAnnotation;
+import com.mybatis.demo.aop.annotation.RequestLimit;
 import com.mybatis.demo.base.context.SpringContextAware;
 import com.mybatis.demo.base.mq.Producer;
 import com.mybatis.demo.base.redis.cluster.RedisClusterUtil;
@@ -138,6 +139,14 @@ public class UserController {
         HttpSession session = request.getSession();
         session.invalidate();
         return "登出成功";
+    }
+
+    @RequestLimit(count = 10, time = 60000 * 5)
+    @LoginAnnotation(name = "登录验证")
+    @GetMapping("/limit")
+    public ResultV1 limit(@RequestParam int id) {
+        logger.info("id:{}", id);
+        return ResultFactory.SuccessV1("请求成功");
     }
 
 

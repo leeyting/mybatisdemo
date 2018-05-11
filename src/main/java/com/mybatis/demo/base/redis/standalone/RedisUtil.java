@@ -1,15 +1,19 @@
 package com.mybatis.demo.base.redis.standalone;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.Jedis;
 
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import static com.mysql.jdbc.StringUtils.isNullOrEmpty;
 
 /**
  * @Author: liyao
@@ -143,4 +147,31 @@ public class RedisUtil {
         }
         return result;
     }
+
+    public Long increment(String key, Long num) {
+        long result = -1;
+        if (StringUtils.isEmpty(key)) {
+            return result;
+        }
+        try {
+            result = redisTemplate.opsForValue().increment(key, 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Boolean expire(String key, long timeout, TimeUnit unit) {
+        boolean result = false;
+        if (StringUtils.isEmpty(key)) {
+            return result;
+        }
+        try {
+            result = expire(key, timeout, unit);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }
