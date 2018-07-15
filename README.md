@@ -21,3 +21,5 @@ spring.session.store-type=redis
 8.邮件发送
 
 9.beetl模板
+
+10.spring 重试
